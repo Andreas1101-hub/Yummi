@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    let ingredients = Ingredient(name: "Apple", quantity: 5, unit: "kg", category: .Fruits, expiryDate: Date.distantFuture)
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("\(ingredients.displayStats())")
+
         }
         .padding()
     }
 }
+
 
 #Preview {
     ContentView()
