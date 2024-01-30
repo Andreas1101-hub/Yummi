@@ -7,14 +7,36 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    let ingredients = Ingredient(name: "Apple", quantity: 5, unit: "kg", category: .Fruits, expiryDate: Date.distantFuture)
-    var body: some View {
-        VStack {
-            Text("\(ingredients.displayStats())")
+func getDate(year: Int, month: Int, day: Int) -> Date {
+    return Calendar.current.date(from: DateComponents(calendar: Calendar.current, year: year, month: month, day: day))!
+}
 
+struct ContentView: View {
+    @State private var ingredientsList = allIngredient()
+    @State private var selectedIngredient = 0 {
+        didSet{
+            if selectedIngredient > ingredientsList.allIngredients.count-1 {
+                selectedIngredient = 0
+            }
         }
-        .padding()
+    }
+    @State private var newIngredientName = ""
+    var body: some View {
+        Form {
+            Section {
+                VStack(alignment: .leading, spacing: 20) {
+                    Text("\(ingredientsList.allIngredients[selectedIngredient].displayStats())")
+                    Button("Next Ingredient", action: {
+                        selectedIngredient += 1
+                    })
+                }
+            }
+            Section {
+                VStack(alignment: .leading, spacing: 20) {
+                    TextField("Ingredient Name", text: $newIngredientName)
+                }
+            }
+        }
     }
 }
 

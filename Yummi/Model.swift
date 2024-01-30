@@ -18,9 +18,9 @@ struct Ingredient {
     func displayStats() -> String {
         return """
 Name: \(name)
-Quantity: \(quantity) (unit)
+Quantity: \(quantity) \(unit)
 Category: \(category)
-Expiry Date: \(expiryDate)
+Expiry Date: \(expiryDate.formatted(date: .abbreviated, time: .omitted))
 """
     }    
     
@@ -33,4 +33,10 @@ enum Category: String {
     case Dairy
     case Vegetables
     case Carbs
+}
+
+struct allIngredient {
+    var allIngredients = [Ingredient(name: "Apple", quantity: 5, unit: "kg", category: .Fruits, expiryDate: getDate(year: 2025, month: 12, day: 5)),
+                          Ingredient(name: "Orange", quantity: 4, unit: "kg", category: .Fruits, expiryDate: getDate(year: 2025, month: 12, day: 6)),
+                          Ingredient(name: "Bread", quantity: 25, unit: "loaves", category: .Carbs, expiryDate: getDate(year: 2024, month: 02, day: 19))]
 }
