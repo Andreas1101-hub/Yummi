@@ -29,9 +29,13 @@ struct ContentView: View {
     @State private var selectedUnit: Unit = .kg
     @State private var selectedCategory: Category = .Carbs
     @State private var newExpiryDate = Date()
+    
+    @State private var value = 0
+    let step = 1
+    let range = 1...50
     var body: some View {
         List {
-            Section {
+            Section ("Information") {
                 VStack(alignment: .leading, spacing: 20) {
                     Text("\(ingredientsList.allIngredients[selectedIngredient].displayStats())")
                     Button(action: {
@@ -41,16 +45,23 @@ struct ContentView: View {
                     }
                 }
             }
-            Section {
+            Section ("Add Ingredients") {
                 TextField("Ingredient Name", text: $newIngredientName)
-                HStack {
-                    TextField("Quantity", text: $newQuantity)
-                        .keyboardType(.numberPad)
+                HStack (spacing: 0) {
+                    Stepper (
+                        value: $value,
+                        in: range,
+                        step: step
+                    ) {
+                        Text("Quantity: \(value)")
+                    }
                     Picker("", selection: $selectedUnit) {
                         Text("Kilogram").tag(Unit.kg)
                         Text("Tea Spoons").tag(Unit.teaspoons)
                         Text("Milliliter").tag(Unit.ml)
                     }
+                    .background(Color.red)
+                
                 }
                 Picker("Category", selection: $selectedCategory) {
                     Text("Fruits").tag(Category.Fruits)
@@ -61,7 +72,7 @@ struct ContentView: View {
                 }
                 DatePicker("Expiry Date", selection: $newExpiryDate, displayedComponents: [.date])
                 Button(action: {
-                    let tempIngredient = Ingredient(name: newIngredientName, quantity: newQuantity, unit: selectedUnit.rawValue, category: selectedCategory, expiryDate: newExpiryDate)
+                    let tempIngredient = Ingredient(name: newIngredientName, quantity: String(value), unit: selectedUnit.rawValue, category: selectedCategory, expiryDate: newExpiryDate)
                     ingredientsList.allIngredients.append(tempIngredient)
                     newIngredientName = ""
                     newQuantity = ""
