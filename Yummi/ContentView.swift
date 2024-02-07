@@ -48,20 +48,19 @@ struct ContentView: View {
             Section ("Add Ingredients") {
                 TextField("Ingredient Name", text: $newIngredientName)
                 HStack (spacing: 0) {
+                    Text("Quantity: \(value)")
                     Stepper (
                         value: $value,
                         in: range,
                         step: step
                     ) {
-                        Text("Quantity: \(value)")
+                        
                     }
                     Picker("", selection: $selectedUnit) {
-                        Text("Kilogram").tag(Unit.kg)
-                        Text("Tea Spoons").tag(Unit.teaspoons)
-                        Text("Milliliter").tag(Unit.ml)
+                        Text("Kg").tag(Unit.kg)
+                        Text("tsp").tag(Unit.teaspoons)
+                        Text("ml").tag(Unit.ml)
                     }
-                    .background(Color.red)
-                
                 }
                 Picker("Category", selection: $selectedCategory) {
                     Text("Fruits").tag(Category.Fruits)
@@ -69,6 +68,8 @@ struct ContentView: View {
                     Text("Carbs").tag(Category.Carbs)
                     Text("Dairy").tag(Category.Dairy)
                     Text("Vegetables").tag(Category.Vegetables)
+                    Text("Confectionary").tag(Category.Confectionary)
+                    Text("Condiments").tag(Category.Condiments)
                 }
                 DatePicker("Expiry Date", selection: $newExpiryDate, displayedComponents: [.date])
                 Button(action: {
