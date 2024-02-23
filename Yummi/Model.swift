@@ -68,7 +68,16 @@ struct Recipe {
     var isFavourite: Bool
     var rating: Int
     
+    var displayInfo: String {
+        """
+        Name: \(self.name)
+        Favourite\(self.isFavourite)
+        Rating\(self.rating)
+        """
+    }
+
+    
     #if DEBUG
-    static var recipeExamples = {Recipe(name: "Cake", ingredients: [Ingredient.examples[3], Ingredient.examples[4], Ingredient.examples[5], Ingredient.examples[6]], isFavourite: true, rating: 8)}
+    static var recipeExamples: [Recipe] = [Recipe(name: "Cake", ingredients: [Ingredient.examples[3], Ingredient.examples[4], Ingredient.examples[5], Ingredient.examples[6]], isFavourite: true, rating: 8)]
     #endif
 }
