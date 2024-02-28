@@ -106,8 +106,8 @@
 				5010F0F62B5FEEC6006D26CC /* ContentView.swift */,
 				50F3EEDF2B88A7A9007D8423 /* IngredientsView.swift */,
 				50F3EEE12B88A8A5007D8423 /* RecipesView.swift */,
-				507FB3172B61762100186EA2 /* Model.swift */,
 				50F3EEE32B88AB45007D8423 /* IndividualRecipe.swift */,
+				507FB3172B61762100186EA2 /* Model.swift */,
 				5010F0F82B5FEEC8006D26CC /* Assets.xcassets */,
 				5010F0FA2B5FEEC8006D26CC /* Preview Content */,
 			);

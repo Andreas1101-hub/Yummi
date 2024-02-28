@@ -11,17 +11,24 @@ struct IndividualRecipe: View {
     @State var recipe: Recipe
     var body: some View {
         NavigationStack {
-            Section("Ingredients") {
-                ForEach(recipe.ingredients, id:\.name) { ingredient in
-                    Text("\(ingredient.name)")
+            List {
+                Section("Ingredients") {
+                    ForEach(recipe.ingredients, id:\.name) { ingredient in
+                        Text("\(ingredient.name)")
+                    }
+                }
+                Section("Rating and Favourite") {
+                    Text("Rating: \(recipe.rating)")
+                    HStack {
+                        Text("Favourite: \(recipe.isFavourite ? "✅" : "❌")")
+                        Toggle("", isOn: $recipe.isFavourite)
+                    }
                 }
             }
-            Text("...")
-        .navigationTitle(recipe.name)
+            .navigationTitle(recipe.name)
         }
     }
 }
-
 #Preview {
     IndividualRecipe(recipe: Recipe.recipeExamples[0])
 }

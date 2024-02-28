@@ -34,7 +34,8 @@ Expiry Date: \(expiryDate.formatted(date: .abbreviated, time: .omitted))
           Ingredient(name: "Butter", quantity: "2", unit: "kg", category: .Dairy, expiryDate: getDate(year: 2025, month: 03, day: 01)),
           Ingredient(name: "Sugar", quantity: "20", unit: "tsp", category: .Confectionary, expiryDate: getDate(year: 2025, month: 08, day: 19)),
           Ingredient(name: "Salt", quantity: "5", unit: "tsp", category: .Condiments, expiryDate: getDate(year: 2028, month: 09, day: 22)),
-          Ingredient(name: "Steak", quantity: "3", unit: "kg", category: .Meats, expiryDate: getDate(year: 2024, month: 03, day: 12))
+          Ingredient(name: "Steak", quantity: "3", unit: "kg", category: .Meats, expiryDate: getDate(year: 2024, month: 03, day: 12)),
+          Ingredient(name: "Rice", quantity: "8", unit: "kg", category: .Carbs, expiryDate: getDate(year: 2026, month: 05, day: 11))
     ]
     #endif
 }
@@ -59,7 +60,8 @@ struct allIngredient {
                           Ingredient(name: "Butter", quantity: "2", unit: "kg", category: .Dairy, expiryDate: getDate(year: 2025, month: 03, day: 01)),
                           Ingredient(name: "Sugar", quantity: "20", unit: "tsp", category: .Confectionary, expiryDate: getDate(year: 2025, month: 08, day: 19)),
                           Ingredient(name: "Salt", quantity: "5", unit: "tsp", category: .Condiments, expiryDate: getDate(year: 2028, month: 09, day: 22)),
-                          Ingredient(name: "Steak", quantity: "3", unit: "kg", category: .Meats, expiryDate: getDate(year: 2024, month: 03, day: 12))]
+                          Ingredient(name: "Steak", quantity: "3", unit: "kg", category: .Meats, expiryDate: getDate(year: 2024, month: 03, day: 12)),
+                          Ingredient(name: "Rice", quantity: "8", unit: "kg", category: .Carbs, expiryDate: getDate(year: 2026, month: 05, day: 11))]
 }
 
 struct Recipe {
@@ -78,6 +80,6 @@ struct Recipe {
 
     
     #if DEBUG
-    static var recipeExamples: [Recipe] = [Recipe(name: "Cake", ingredients: [Ingredient.examples[3], Ingredient.examples[4], Ingredient.examples[5], Ingredient.examples[6]], isFavourite: true, rating: 8)]
+    static var recipeExamples: [Recipe] = [Recipe(name: "Cake 🎂", ingredients: [Ingredient.examples[3], Ingredient.examples[4], Ingredient.examples[5], Ingredient.examples[6]], isFavourite: false, rating: 8), Recipe(name: "Fried Rice 🍛", ingredients: [Ingredient.examples[5], Ingredient.examples[9]], isFavourite: true, rating: 10)]
     #endif
 }

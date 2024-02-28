@@ -8,22 +8,20 @@
 import SwiftUI
 
 struct RecipesView: View {
-    @State var isFavourite: Bool = false
+    
+    @State var recipes: [Recipe] = Recipe.recipeExamples
+    
     var body: some View {
         NavigationStack {
             List {
-                ForEach(Recipe.recipeExamples, id: \.name) { recipes in
+                ForEach(Recipe.recipeExamples, id: \.rating) { recipes in
                     NavigationLink(destination: IndividualRecipe(recipe: recipes)) {
-                        Button {
-                            isFavourite.toggle()
-                        } label: {
-                            Text(isFavourite ? "star.fill" : "⭐️")
-                        }
+                        Text(recipes.isFavourite ? "⭐️" : "     ")
                         Text("\(recipes.name)")
                     }
                 }
-                .navigationTitle("Recipes")
             }
+            .navigationTitle("Recipes")
         }
     }
 }
