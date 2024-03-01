@@ -10,23 +10,21 @@ import SwiftUI
 struct IndividualRecipe: View {
     @State var recipe: Recipe
     var body: some View {
-        NavigationStack {
-            List {
-                Section("Ingredients") {
-                    ForEach(recipe.ingredients, id:\.name) { ingredient in
-                        Text("\(ingredient.name)")
-                    }
-                }
-                Section("Rating and Favourite") {
-                    Text("Rating: \(recipe.rating)")
-                    HStack {
-                        Text("Favourite: \(recipe.isFavourite ? "✅" : "❌")")
-                        Toggle("", isOn: $recipe.isFavourite)
-                    }
+        List {
+            Section("Ingredients") {
+                ForEach(recipe.ingredients, id:\.name) { ingredient in
+                    Text("\(ingredient.name)")
                 }
             }
-            .navigationTitle(recipe.name)
+            Section("Rating and Favourite") {
+                Text("Rating: \(recipe.rating)")
+                HStack {
+                    Text("Favourite: \(recipe.isFavourite ? "✅" : "❌")")
+                    Toggle("", isOn: $recipe.isFavourite)
+                }
+            }
         }
+        .navigationTitle(recipe.name)
     }
 }
 #Preview {

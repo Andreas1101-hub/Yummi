@@ -18,10 +18,25 @@ struct RecipesView: View {
                     NavigationLink(destination: IndividualRecipe(recipe: recipes)) {
                         Text(recipes.isFavourite ? "⭐️" : "     ")
                         Text("\(recipes.name)")
+                        }
+                    }
+                }
+            .navigationTitle("Recipes")
+            .toolbar {
+                ToolbarItem(placement: .status) {
+                    HStack {
+                        Button(action: {
+                            print("hello")
+                        } ) {
+                            Image(systemName: "plus.app")
+                                .scaleEffect(1.4)
+                            Text("Add New Recipe")
+                            
+                        }
+                        .padding(.top,-100)
                     }
                 }
             }
-            .navigationTitle("Recipes")
         }
     }
 }
