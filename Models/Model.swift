@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Ingredient {
+struct Ingredient: Hashable {
     let name: String
     var quantity: String
     var unit: String

@@ -11,5 +11,5 @@ class NewRecipeViewModel: ObservableObject {
     static let shared = NewRecipeViewModel()
     private init() {}
     
-    
+    @Published var recipes: [Recipe] = Recipe.recipeExamples
 }
