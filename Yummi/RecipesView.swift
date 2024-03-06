@@ -10,7 +10,7 @@ import SwiftUI
 struct RecipesView: View {
     
     @State var recipes: [Recipe] = Recipe.recipeExamples
-    
+    @State var present = false
     var body: some View {
         NavigationStack {
             List {
@@ -22,18 +22,22 @@ struct RecipesView: View {
                     }
                 }
             .navigationTitle("Recipes")
+            .sheet(isPresented: $present) {
+                NewRecipeView(ingredients: Ingredient.examples)
+            }
             .toolbar {
                 ToolbarItem(placement: .status) {
                     HStack {
-                        Button(action: {
-                            print("hello")
-                        } ) {
-                            Image(systemName: "plus.app")
-                                .scaleEffect(1.4)
-                            Text("Add New Recipe")
-                            
+                        Button {
+                            present.toggle()
+                        } label: {
+                            HStack {
+                                Image(systemName: "plus.app")
+                                    .scaleEffect(1.4)
+                                Text("Add New Recipe")
+                            }
+//                            .padding(.top,-100)
                         }
-                        .padding(.top,-100)
                     }
                 }
             }
