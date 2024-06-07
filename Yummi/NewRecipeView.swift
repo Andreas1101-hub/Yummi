@@ -8,21 +8,23 @@
 import SwiftUI
 
 struct NewRecipeView: View {
-//    @ObservableObject var shared = NewRecipeViewModel.shared
+    @ObservedObject var shared = NewRecipeViewModel.shared
     @State var ingredients: [Ingredient]
     @State var selectedIngredient: Ingredient = Ingredient.examples[0]
     @State private var multiSelection = Set<UUID>()
     var body: some View {
         NavigationStack {
             VStack {
-                List(ingredients, id: \.self.name, selection: $multiSelection) { ingredient in
+                List(ingredients, id: \.id, selection: $multiSelection) { ingredient in
                     Text(ingredient.name)
                 }
-                Text("\(multiSelection.count) selections")
             }
             .navigationTitle("New Recipes")
             .toolbar { EditButton() }
         }
+        Text("\(multiSelection.count) selections")
+        
+
         
     }
 }
